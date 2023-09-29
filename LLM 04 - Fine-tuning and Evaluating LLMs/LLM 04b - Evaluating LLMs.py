@@ -25,9 +25,16 @@
 
 # COMMAND ----------
 
-# MAGIC %pip install rouge_score==0.1.2
+# MAGIC %pip install rouge_score==0.1.2 torch datasets transformers evaluate
 
 # COMMAND ----------
+
+# COMMAND ----------
+
+# MAGIC dbutils.library.restartPython()
+
+# COMMAND ----------
+
 
 # MAGIC %run ../Includes/Classroom-Setup
 

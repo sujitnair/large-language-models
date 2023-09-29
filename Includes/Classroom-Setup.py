@@ -3,21 +3,58 @@
 
 # COMMAND ----------
 
-DA = DBAcademyHelper(course_config, lesson_config)  # Create the DA object
-DA.reset_lesson()                                   # Reset the lesson to a clean state
-DA.init()                                           # Performs basic intialization including creating schemas and catalogs
+import os
 
-DA.paths.working_dir = DA.paths.to_vm_path(DA.paths.working_dir)
-DA.paths.datasets = DA.paths.to_vm_path(DA.paths.datasets)
-DA.paths.user_db = DA.paths.to_vm_path(DA.paths.user_db)
+# Setup UC Volume
+catalog = 'llmmoocs'
+schema = 'default'
+hf_volume = "huggingface"
+data_volume = "data"
+
+query = f"""
+    CREATE CATALOG IF NOT EXISTS %s
+    """ % catalog
+spark.sql(query)
+
+query = f"""
+    CREATE VOLUME IF NOT EXISTS %s.%s.%s
+    """ % (catalog, schema, hf_volume)
+spark.sql(query)
+
+query = f"""
+    CREATE VOLUME IF NOT EXISTS %s.%s.%s
+    """ % (catalog, schema, data_volume)
+spark.sql(query)
+
+
+hf_home = "/Volumes/"+catalog+"/" + schema + "/huggingface"
+# Set environment variables
+os.environ["HF_HOME"] = hf_home
+os.environ["HF_DATASETS_CACHE"] = hf_home + "/datasets"
+os.environ["TRANSFORMERS_CACHE"] = hf_home + "/models"
+
+# Assuming DA is a module or an existing object, set its attributes
+# If DA isn't yet defined, you can define it as a class or a simple object first
+
+# For instance, if you don't have DA defined yet, you can do:
+class DataAttributes:
+    paths = None
+    username = None
+
+DA = DataAttributes()
+DA.paths = DataAttributes()  # set up the paths sub-object
+
+DA.paths.datasets = "/Volumes/" + catalog + "/" + schema + "/data"
+DA.paths.working_dir = DA.paths.datasets + "/working_dir"
+
+# Assuming you're in a Databricks environment, figure out username using dbutils:
+# Please replace the placeholder below with the actual method to retrieve the username in your Databricks environment
+# ChatGPT messed up!
+# DA.username = dbutils.notebook.entry_point.getDbutils().notebook().getContext().tags().get("user")
+
+DA.username = dbutils.notebook.entry_point.getDbutils().notebook().getContext().userName().get()
+print(DA.username)  # to verify the value of username
+
 
 # COMMAND ----------
-
-# MAGIC %run ./Test-Framework
-
-# COMMAND ----------
-
-DA.conclude_setup()                                 # Finalizes the state and prints the config for the student
-
-print("\nThe models developed or used in this course are for demonstration and learning purposes only.\nModels may occasionally output offensive, inaccurate, biased information, or harmful instructions.")
 

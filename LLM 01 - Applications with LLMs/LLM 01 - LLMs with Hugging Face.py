@@ -43,6 +43,13 @@
 # COMMAND ----------
 
 # MAGIC %pip install sacremoses==0.0.53
+# MAGIC %pip install datasets transformers torch sentencepiece
+
+# COMMAND ----------
+
+# COMMAND ----------
+
+# MAGIC dbutils.library.restartPython()
 
 # COMMAND ----------
 

@@ -25,6 +25,13 @@
 # COMMAND ----------
 
 # MAGIC %pip install faiss-cpu==1.7.4 chromadb==0.3.21
+# MAGIC %pip install sacremoses==0.0.53 datasets transformers torch sentencepiece
+
+# COMMAND ----------
+
+# COMMAND ----------
+
+# MAGIC dbutils.library.restartPython()
 
 # COMMAND ----------
 

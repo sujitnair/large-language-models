@@ -53,6 +53,18 @@
 
 # COMMAND ----------
 
+# MAGIC %pip install rouge_score==0.1.2 torch datasets transformers mlflow torchvision
+
+# COMMAND ----------
+
+# COMMAND ----------
+
+# MAGIC dbutils.library.restartPython()
+
+# COMMAND ----------
+
+# COMMAND ----------
+
 # MAGIC %run ../Includes/Classroom-Setup
 
 # COMMAND ----------

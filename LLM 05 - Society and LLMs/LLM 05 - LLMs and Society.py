@@ -17,6 +17,21 @@
 # MAGIC 1. Use SHAP to generate explanation on model output
 # MAGIC 1. Learn the latest state of research in model explanation: contrastive explanation
 
+
+# COMMAND ----------
+
+# MAGIC %pip install disaggregators==0.1.2 https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.5.0/en_core_web_lg-3.5.0-py3-none-any.whl
+# MAGIC %pip install datasets transformers evaluate torch shap
+
+# COMMAND ----------
+
+# COMMAND ----------
+
+# MAGIC dbutils.library.restartPython()
+
+# COMMAND ----------
+
+
 # COMMAND ----------
 
 # MAGIC %md

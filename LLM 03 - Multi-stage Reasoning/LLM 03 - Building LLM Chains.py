@@ -32,6 +32,21 @@
 
 # COMMAND ----------
 
+# MAGIC %pip install faiss-cpu==1.7.4 chromadb==0.3.21
+# MAGIC %pip install sacremoses==0.0.53 datasets transformers torch sentencepiece
+# MAGIC %pip install wikipedia==1.4.0 google-search-results==2.4.2 better-profanity==0.7.0 sqlalchemy==2.0.15
+# MAGIC %pip install langchain
+
+# COMMAND ----------
+
+# COMMAND ----------
+
+# MAGIC dbutils.library.restartPython()
+
+# COMMAND ----------
+
+# COMMAND ----------
+
 # MAGIC %run ../Includes/Classroom-Setup
 
 # COMMAND ----------
