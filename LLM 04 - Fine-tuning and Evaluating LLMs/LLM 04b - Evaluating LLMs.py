@@ -29,13 +29,11 @@
 
 # COMMAND ----------
 
-# COMMAND ----------
-
-# MAGIC dbutils.library.restartPython()
+dbutils.library.restartPython()
 
 # COMMAND ----------
 
-
+# MAGIC
 # MAGIC %run ../Includes/Classroom-Setup
 
 # COMMAND ----------

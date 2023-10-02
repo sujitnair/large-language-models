@@ -47,9 +47,7 @@
 
 # COMMAND ----------
 
-# COMMAND ----------
-
-# MAGIC dbutils.library.restartPython()
+dbutils.library.restartPython()
 
 # COMMAND ----------
 
