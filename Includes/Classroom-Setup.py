@@ -1,7 +1,4 @@
 # Databricks notebook source
-
-# COMMAND ----------
-
 import os
 
 # Setup UC Volume
@@ -56,4 +53,5 @@ print(DA.username)  # to verify the value of username
 
 
 # COMMAND ----------
+
 
