@@ -53,7 +53,7 @@
 
 # COMMAND ----------
 
-# MAGIC %pip install rouge_score==0.1.2 torch datasets transformers mlflow torchvision
+# MAGIC %pip install -q rouge_score==0.1.2 torch==2.0.1 datasets transformers==4.33.1 mlflow==2.7.1 torchvision==0.15.2 importlib-metadata==4.6.4
 
 # COMMAND ----------
 
@@ -319,7 +319,7 @@ client.search_registered_models(filter_string=f"name = '{model_name}'")
 
 # COMMAND ----------
 
-model_version = 1
+model_version = 2
 dev_model = mlflow.pyfunc.load_model(model_uri=f"models:/{model_name}/{model_version}")
 dev_model
 
@@ -394,12 +394,16 @@ display(prod_data)
 # COMMAND ----------
 
 # MLflow lets you grab the latest model version in a given stage.  Here, we grab the latest Production version.
+import pyspark
+
 prod_model_udf = mlflow.pyfunc.spark_udf(
     spark,
     model_uri=f"models:/{model_name}/Production",
     env_manager="local",
-    result_type="string",
+    # result_type="string",
+    result_type=pyspark.sql.types.StringType(),
 )
+
 
 # COMMAND ----------
 
